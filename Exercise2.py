@@ -29,7 +29,7 @@ Rsv = (Psv0-Pra0)/q0
 
 ### Exponential function of A
 #completato con i valori visti a lezione negli appunti (BSM)
-A_00 = -1/(Csa*Rsa)
+A_00 = -1/(Csa*Rsa) #controlla questi parametri
 A_01 = +1/(Csa*Rsa)
 A_02 = Kr/Csa
 A_10 = 1/(Csv*Rsa)
@@ -61,9 +61,11 @@ di valori e una matrice di valori. '''
 lambda1 =w[0] #l'array w ha come componenti gli autovalori
 lambda2 = w[1]
 lambda3 = w[2]
-alpha = 
-X_eig = # TO COMPLETE
-
+alpha = np.linalg.solve(v, X0) #nota bene la posizione dei due elementi a seconda delle dimensioni 
+var1=alpha[0]*np.transpose([v[:,0]])*np.exp([lambda1*t]) #we write [v[:,0]] so that python extracts a list of number of (1,3) and then transpose it to get (3,1)
+var2=alpha[1]*np.transpose([v[:,1]])*np.exp([lambda2*t])
+var3=alpha[2]*np.transpose([v[:,2]])*np.exp([lambda3*t])
+X_eig = var1+var2+var3
 # Euler's method    
 Ii = np.zeros(L) 
 Psa = np.zeros(L)
