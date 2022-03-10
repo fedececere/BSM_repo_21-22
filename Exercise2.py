@@ -31,24 +31,25 @@ Rsv = (Psv0-Pra0)/q0
 #completato con i valori visti a lezione negli appunti (BSM)
 A_00 = -1/(Csa*Rsa)
 A_01 = +1/(Csa*Rsa)
-A_02 = k/Csa
+A_02 = Kr/Csa
 A_10 = 1/(Csv*Rsa)
-A_11 = -1/(Csv(1/Rsa+1/Rsv))
+A_11 = -1/(Csv/Rsa+Csv/Rsv)
 A_12 = 1/(Csv*Rsv)
 A_20 = 0
 A_21 = 1/(Cra*Rsv)
-A_22 = -1/Cra*(1/Rsv+k)
-A = np.array([[A_00, A_01, A_02], [A_10, A_11, A_12], [A_20, A_21, A_22]]) # Check A type and shape, by using type(A) and np.shape(A)
-X0 = np.array([Psa0*1.5, Psv0, Pra0]) # Check X0 type and shape, by using type(X0) and np.shape(X0)
-DT = # TO COMPLETE
+A_22 = -1/Cra*(1/Rsv+Kr)
+A = np.array([[A_00, A_01, A_02], [A_10, A_11, A_12], [A_20, A_21, A_22]]) 
+ # Check A type and shape, by using type(A) and np.shape(A), using the PYTHON CONSOLE on the left
+X0 = np.array([Psa0*1.5, Psv0, Pra0])
+ # Check X0 type and shape, by using type(X0) and np.shape(X0)
+DT = 0.001 #passo infinitesimo del tempo
 t_start = 0
 t_end = 50
 t = np.arange(t_start, t_end, DT) 
 L = np.size(t)
 X_exp = np.zeros((3,L))
 for j in range(L):
-    X_exp[:,j] = # TO COMPLETE
-    
+    X_exp[:,j] = np.matmul(expm(A*(t[j]-t[0])),X0) # in questo modo python eseque il prodotto tra matrici (non lo fa direttamente come matlab)
 ### Eigenvectors and eigenvalues of A
 w,v = # TO COMPLETE
 lambda1 = # TO COMPLETE
