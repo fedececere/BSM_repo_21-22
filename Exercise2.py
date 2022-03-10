@@ -13,7 +13,7 @@ import seaborn as sns
 from scipy.linalg import expm
 
 
-q0 = # TO COMPLETE  # cardiac in ml/s
+q0 = 5*1000/60  # cardiac in ml/s
 Psa0 = 100
 Psv0 = 5
 Pra0 = 4
@@ -22,20 +22,22 @@ Csv = 111
 Cra = 31
 
 # Computation of remaining parameters at equilibrium
-Kr = # TO COMPLETE
-Rsa = # TO COMPLETE
-Rsv = # TO COMPLETE
+#ogni resistenza è data dalla differenza delle pressioni ai capi diviso il flusso (in questo caso non di considerano le capacità)
+Kr = q0/Pra0 
+Rsa = (Psa0-Psv0)/q0
+Rsv = (Psv0-Pra0)/q0
 
 ### Exponential function of A
-A_00 = # TO COMPLETE
-A_01 = # TO COMPLETE
-A_02 = # TO COMPLETE
-A_10 = # TO COMPLETE
-A_11 = # TO COMPLETE
-A_12 = # TO COMPLETE
-A_20 = # TO COMPLETE
-A_21 = # TO COMPLETE
-A_22 = # TO COMPLETE
+#completato con i valori visti a lezione negli appunti (BSM)
+A_00 = -1/(Csa*Rsa)
+A_01 = +1/(Csa*Rsa)
+A_02 = k/Csa
+A_10 = 1/(Csv*Rsa)
+A_11 = -1/(Csv(1/Rsa+1/Rsv))
+A_12 = 1/(Csv*Rsv)
+A_20 = 0
+A_21 = 1/(Cra*Rsv)
+A_22 = -1/Cra*(1/Rsv+k)
 A = np.array([[A_00, A_01, A_02], [A_10, A_11, A_12], [A_20, A_21, A_22]]) # Check A type and shape, by using type(A) and np.shape(A)
 X0 = np.array([Psa0*1.5, Psv0, Pra0]) # Check X0 type and shape, by using type(X0) and np.shape(X0)
 DT = # TO COMPLETE
