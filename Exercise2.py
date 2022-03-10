@@ -50,12 +50,18 @@ L = np.size(t)
 X_exp = np.zeros((3,L))
 for j in range(L):
     X_exp[:,j] = np.matmul(expm(A*(t[j]-t[0])),X0) # in questo modo python eseque il prodotto tra matrici (non lo fa direttamente come matlab)
+
 ### Eigenvectors and eigenvalues of A
-w,v = # TO COMPLETE
-lambda1 = # TO COMPLETE
-lambda2 = # TO COMPLETE
-lambda3 = # TO COMPLETE
-alpha = # TO COMPLETE
+
+w,v= np.linalg.eig(A)
+''' usando np-linalg-eig(matrice) python effettua il calcolo prima degli autovalori, che chiamiamo w,
+poi degli autovettori, che chiamiamo v, in questo modo a w e v saranno automaticamente assegnati un array
+di valori e una matrice di valori. '''
+
+lambda1 =w[0] #l'array w ha come componenti gli autovalori
+lambda2 = w[1]
+lambda3 = w[2]
+alpha = 
 X_eig = # TO COMPLETE
 
 # Euler's method    
