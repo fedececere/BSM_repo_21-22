@@ -69,25 +69,49 @@ VD = np.zeros(L)
 
 # breath definition
 T = 5 # period of the natural breath
-ventilation = # TO COMPLETE
+ventilation = 'mixed'
 if ventilation == "natural":
     print("Natural breath")
     # TO COMPLETE
+    Amus=3
+    Pmus=Amus*(np.cos(2*np.pi/T*t)-1)
+    Pm=np.zeros(L) #pm= pven negli appunti
 elif ventilation == "natural with increased amplitude":
     print("natural breath with increased amplitude")
-    # TO COMPLETE
+    Amus=3*2
+    Pmus=Amus*(np.cos(2*np.pi/T*t)-1)
+    Pm=np.zeros(L)
 elif ventilation == "natural with increased frequency":
     print("natural breath with increased frequency")
-    # TO COMPLETE
+    Amus=3
+    Pmus=Amus*(np.cos(4*np.pi/T*t)-1)
+    Pm=np.zeros(L)
 elif ventilation == "artificial":
     print("Artificial ventilation")
-    # TO COMPLETE
+    Pmus=np.zeros(L)
+    Pm=3*(np.cos(2*np.pi/T*t)-1)
 elif ventilation == "mixed":
     print("Mixed ventilation")
-    # TO COMPLETE
+    Amus=1
+    fi=0.5*np.pi
+    Pmus=-1-Amus*np.cos(2*np.pi/T*t+fi)#we introduce a frequency because the
+    #two respirations cannot work simulatneously, otherwise they would fight
+    #with each other
+    Am=-3
+    Pm=Am*(np.cos(2*np.pi/T*t)-1)
 elif ventilation == "actual natural":
     print("Actual natural ventilation")
-    # TO COMPLETE
+    Pm=np.zeros(L)
+    Amus=-6
+    Ti=0.4*T
+    Te=T-Ti
+    tau=Te/5
+    tti==np.arange(0, Ti, dl)
+    PmusI=-Amus/Ti/Te*tti*tti+Amus*T/Ti/Te*tti
+   
+    x[t<Ti]=(-Pmin/(Ti*Te))*t^2+((Pmin*T)/(Ti*Te))*t
+    x[t>Ti]=(Pmin/(1-np.exp((-Te)/tau)))(np.exp((-t-Ti)/tau)-np.exp(-Te/tau))
+    
 else:
     print("The options are: natural; natural with increased amplitude; natural with increased frequency; artificial; mixed; actual natural")
     
