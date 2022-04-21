@@ -38,7 +38,7 @@ I = 0 # TO COMPLETE  # Patient is not drinking
 Vp = 70*58/100+2# TO COMPLETE   # Patient's liquid volume at the begenning of the dialysis
 d =0.241# TO COMPLETE # dialysance
 cd_Na =140 # TO COMPLETE # Na in dialysis bath
-cd_U = 140# TO COMPLETE0 # Urea in dialysis bath
+cd_U =0# TO COMPLETE0 # Urea in dialysis bath
 cd_K = 2# TO COMPLETE # K in dialysis bath
 
 # Euler's method initialization (remember that time is in minutes)
